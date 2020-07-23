@@ -1,16 +1,22 @@
 package rpc;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Servlet implementation class RecommendItem
  */
-@WebServlet("/RecommendItem")
+@WebServlet("/recommendation")
 public class RecommendItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,8 +32,26 @@ public class RecommendItem extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		 TODO Auto-generated method stub
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("application/json");
+		PrintWriter writer = response.getWriter();
+		
+		JSONArray array = new JSONArray();
+		
+		try {
+			array.put(new JSONObject().put("name","abcd").put("address","San").put("time","01/01/2017"));
+			array.put(new JSONObject().put("name","1234").put("address","San").put("time","01/01/2017"));
+			
+		}catch(JSONException e) {
+			e.printStackTrace();
+			
+		}
+		
+		RpcHelper.writeJsonArray(response,array);
+		
+//		writer.print(array);
+		
 	}
 
 	/**
