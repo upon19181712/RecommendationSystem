@@ -32,34 +32,34 @@ public class RecommendItem extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		 TODO Auto-generated method stub
+		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("application/json");
 		PrintWriter writer = response.getWriter();
 		
 		JSONArray array = new JSONArray();
-		
 		try {
-			array.put(new JSONObject().put("name","abcd").put("address","San").put("time","01/01/2017"));
-			array.put(new JSONObject().put("name","1234").put("address","San").put("time","01/01/2017"));
-			
-		}catch(JSONException e) {
-			e.printStackTrace();
-			
+				array.put(new JSONObject().put("name", "abcd").put("address", "San Franscisco").put("time", "01/01/2017"));
+				array.put(new JSONObject().put("name", "1234").put("address", "San Jose").put("time", "01/01/2017"));
+
+		} catch (JSONException e) {
+				e.printStackTrace();
 		}
 		
-		RpcHelper.writeJsonArray(response,array);
-		
 //		writer.print(array);
+		RpcHelper.writeJsonArray(response, array);
 		
 	}
 
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+
+		
 	}
 
 }
