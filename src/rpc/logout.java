@@ -40,6 +40,7 @@ public class logout extends HttpServlet {
 		}
 		response.sendRedirect("index.html");
 	}
+	
 
 	
 	/**
